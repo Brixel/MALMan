@@ -8,11 +8,12 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Barcode</th>
                 <th>Price</th>
+
                 <th>Amount in stock</th>
                 <th>Stock maximum</th>
                 <th>Category</th>
-                <th>Josto</th>
                 {% if 'bar' in current_user.roles %}
                 <th>remove item</th>
                 {% endif %}
@@ -22,11 +23,11 @@
     {% for item in items %}
             <tr>
                 <td>{{ item.name }}</td>
+                <td>{{ item.barcode }}</td>
                 <td>€{{ item.price }}</td>
                 <td>{{ item.stock }}</td>
                 <td>{{ item.stock_max }}</td>
                 <td>{{ item.category.name }}</td>
-                <td>{{ item.josto }}</td>
                 {% if 'bar' in current_user.roles %}
                 <td class="actions">
                     <a href="{{ url_for('bar_remove_item', item_id=item.id) }}">
