@@ -17,6 +17,7 @@ def list_stock():
     items = [{'id': str(item.id),
               'name': str(item.name),
               'price': str(item.price),
+              'barcode' : str(item.barcode),
               'category': str(item.category.name)
              } for item in stock]
     return Response(json.dumps(items), mimetype='application/json')
@@ -100,10 +101,18 @@ def refill():
     If a userID is passed also register the purchase in the user's bar BarAccountLog.
     If no userID is passed register it as a cash transaction.
     """
-    if not 'item_id' in request.form:
+    barcode = False
+    if 'barcode' in request.form:
+        barcode = True
+    if not 'item_id' in request.form and barcode == False:
         return str(False)
-    item_id = int(request.form['item_id'])
-    item = DB.StockItem.query.get(item_id)
+    
+    if( barcode == True):
+        barcodeVal = int(request.form['barcode'])
+        item = DB.StockItem.query.filter_by(barcode=barcodeVal).first()
+    else:
+        item_id = int(request.form['item_id'])
+        item = DB.StockItem.query.get(item_id)
     if not item:
         return str(False)
 

@@ -130,12 +130,12 @@ class StockItem(db.Model):
     """Define the StockItem database table"""
     __tablename__ = 'bar_items'
     id = db.Column(db.Integer, primary_key=True)
+    barcode = db.Column(db.Integer, unique=True)
     name = db.Column(db.String(50), unique=True)
     stock_max = db.Column(db.Integer)
     price = db.Column(db.Numeric(5, 2))
     category_id = db.Column(db.Integer, db.ForeignKey('bar_categories.id'))
     category = db.relationship("StockCategory", backref="dranken", lazy="joined")
-    josto = db.Column(db.Boolean())
     purchases = db.relationship("BarLog", backref="Drank")
     active = db.Column(db.Boolean())
 
