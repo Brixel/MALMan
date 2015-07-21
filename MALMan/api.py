@@ -93,3 +93,31 @@ def purchase():
 
     return str(True)
 
+@app.route("/api/refill", methods=['POST'])
+@api_auth.required
+def refill():
+    """Register a purchase in the bar log.
+    If a userID is passed also register the purchase in the user's bar BarAccountLog.
+    If no userID is passed register it as a cash transaction.
+    """
+    if not 'item_id' in request.form:
+        return str(False)
+    item_id = int(request.form['item_id'])
+    item = DB.StockItem.query.get(item_id)
+    if not item:
+        return str(False)
+
+    if not 'amount' in request.form:
+        return str(False)
+    amount = int(request.form['amount'])
+    if (amount < 0):
+        return str(False)
+
+    purchase = DB.BarLog(
+        item_id = item.id,
+        amount = amount,
+        price = item.price,
+        transaction_type = "refill")
+    DB.db.session.add(purchase)
+    DB.db.session.commit()
+    return str(True)
