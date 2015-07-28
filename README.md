@@ -8,7 +8,7 @@ Getting the code
 Create a directory to contain the program and get the source code:
 
     mkdir -p /usr/local/share/webapps
-    git clone git://github.com/voidwarranties/MALMan.git /usr/local/share/webapps/MALMan
+    git clone git://github.com/Brixel/MALMan.git /usr/local/share/webapps/MALMan
 
 From here on on I will asume you are located in the directory you installed MALMan in,
 so move into this directory.
