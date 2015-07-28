@@ -1,6 +1,6 @@
 MALMan is a WSGI app
 
-Installation [![Build Status](https://travis-ci.org/Brixel/MALMan.svg?branch=master)](https://travis-ci.org/Brixel/MALMan) [![Requirements Status](https://requires.io/github/Brixel/MALMan/requirements.svg?branch=master)](https://requires.io/github/Brixel/MALMan/requirements/?branch=master)
+Installation [![Build Status](https://travis-ci.org/Brixel/MALMan.svg?branch=Brixel_Functionality)](https://travis-ci.org/Brixel/MALMan) [![Requirements Status](https://requires.io/github/Brixel/MALMan/requirements.svg?branch=Brixel_Functionality)](https://requires.io/github/Brixel/MALMan/requirements/?branch=Brixel_Functionality)
 ============
 
 Getting the code
